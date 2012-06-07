@@ -130,6 +130,7 @@ echo $OUTPUT->doctype() ?>
                 echo $OUTPUT->login_info();
             } ?>
             <!-- start navbar -->
+			<?php /* TODO: only for admin */ if (0): ?>
             <div data-role="navbar">
                 <ul>
                 <?php if (!$gowide && !$hasmyblocks && !$toblock && $mypagetype == "mod-quiz-attempt" || !$gowide && !$hasmyblocks && !$toblock && $mylayoutype != "incourse") { ?>
@@ -146,6 +147,7 @@ echo $OUTPUT->doctype() ?>
                 <?php } ?>
                 </ul>
             </div>
+			<?php endif; ?>
             <!-- end navbar -->
         </div>
         <div id="page-header"><!-- empty page-header needed by moodle yui --></div>
@@ -241,9 +243,7 @@ echo $OUTPUT->doctype() ?>
             <div data-role="navbar" class="jnav" >
                 <ul>
                     <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" ><?php p(get_string('calendar', 'calendar')); ?></a></li>
-                    <?php if (!empty($CFG->messaging)) { ?>
-                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/message/index.php" data-iconpos="top" data-icon="mymessage" ><?php p(get_string('messages', 'message')); ?></a></li>
-                    <?php } ?>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/quizzes.php" data-icon="info" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
                     <?php if ($mypagetype != 'site-index') { ?>
                     <li><a href="#" data-inline="true" data-role="button" data-iconpos="top" data-icon="arrow-u" id="uptotop"><?php p(get_string('up')); ?></a></li>
                     <?php } ?>
