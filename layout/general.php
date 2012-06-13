@@ -174,8 +174,7 @@ echo $OUTPUT->doctype() ?>
                 if (!$toblock && !$toset) { ?>
                     <?php if ($hasshowmobileintro && $mypagetype == 'site-index') { ?>
                         <?php echo $PAGE->theme->settings->showmobileintro; ?>
-                    <?php } ?>
-                    <?php echo $OUTPUT->main_content(); ?>
+                    <?php } else { /* no main content on site-index, just welcome text! */ echo $OUTPUT->main_content(); } ?>
                 <?php } ?>
                 </div>
             </div>

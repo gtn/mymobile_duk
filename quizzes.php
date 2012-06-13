@@ -17,7 +17,7 @@ $sql =  "SELECT quiz.id, c.id AS course_id, c.fullname AS course_name, quiz.name
 	." WHERE quiz.course=c.id ORDER BY course_name";
 
 $quizzes = $DB->get_records_sql($sql);
-$printCount = 0;
+$printQuizzes = array();
 
 if ($quizzes) {
 	foreach ($quizzes as $quiz) {
@@ -29,13 +29,21 @@ if ($quizzes) {
 			continue;
 		}
 		
-		echo '<a href="'.$CFG->wwwroot.'/mod/quiz/view.php?id='.$cm->id.'">'.$quiz->course_name.' - '.$quiz->quiz_name."</a><br />";
-		$printCount++;
+		$printQuizzes[] = $quiz;
 	}
 }
-
-if (!$printCount) {
+		
+if (!$printQuizzes) {
 	echo 'No quizzes';
+} else {
+	echo '<ul data-role="controlgroup">';
+	
+	foreach ($printQuizzes as $quiz) {	
+		echo '<li><div class="coursebox clearfix"><div class="info"><h3 class="name"><a href="'.$CFG->wwwroot.'/mod/quiz/view.php?id='.$cm->id.'" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">';
+		echo $quiz->course_name.' - '.$quiz->quiz_name;
+		echo '</a></h3></div></div></li>';
+	}
+	echo '</ul>';
 }
 
 echo $OUTPUT->footer();
