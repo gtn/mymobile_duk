@@ -625,59 +625,7 @@ class theme_mymobile_core_renderer extends core_renderer {
         return html_writer::tag('div', $output, array('class' => $button->class));
     }
 
-    /**
-     * Renders the header for the page
-     *
-     * @return string
-     */
-    public function header() {
-        global $USER, $CFG;
-
-        if (session_is_loggedinas()) {
-            $this->page->add_body_class('userloggedinas');
-        }
-
-        $this->page->set_state(moodle_page::STATE_PRINTING_HEADER);
-
-        // Find the appropriate page layout file, based on $this->page->pagelayout.
-        $layoutfile = $this->page->theme->layout_file($this->page->pagelayout);
-        // Render the layout using the layout file.
-        $rendered = $this->render_page_layout($layoutfile);
-
-        // Slice the rendered output into header and footer.
-        $cutpos = strpos($rendered, $this->unique_main_content_token);
-        if ($cutpos === false) {
-            $cutpos = strpos($rendered, self::MAIN_CONTENT_TOKEN);
-            $token = self::MAIN_CONTENT_TOKEN;
-        } else {
-            $token = $this->unique_main_content_token;
-        }
-
-        if ($cutpos === false) {
-            // TODO: Search for a better solution to this... check this is even needed?
-            //       The following code will lead to header containing nothing, and
-            //       footer containing all of the content for the template.
-            // turned off error by john for ajax load of blocks without main content.
-            // throw new coding_exception('page layout file ' . $layoutfile .
-            //        ' does not contain the string "' . self::MAIN_CONTENT_TOKEN . '".');
-        }
-        $header = substr($rendered, 0, $cutpos);
-        $footer = substr($rendered, $cutpos + strlen($token));
-
-        if (empty($this->contenttype)) {
-            debugging('The page layout file did not call $OUTPUT->doctype()');
-            $header = $this->doctype() . $header;
-        }
-
-        send_headers($this->contenttype, $this->page->cacheable);
-
-        $this->opencontainers->push('header/footer', $footer);
-        $this->page->set_state(moodle_page::STATE_IN_BODY);
-
-        return $header . $this->skip_link_target('maincontent');
-    }
-
-    /**
+     /**
      * Renders a notification
      *
      * @param string $message

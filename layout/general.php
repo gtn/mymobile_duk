@@ -170,14 +170,21 @@ echo $OUTPUT->doctype() ?>
             <div class="content-primary">
                 <div class="region-content <?php if ($toblock) { echo 'mobile_blocksonly'; } ?>" id="themains">
                 <?php
-                //only show main content if we are not showing anything else
-                if (!$toblock && !$toset) { ?>
-                    <?php if ($hasshowmobileintro && $mypagetype == 'site-index') { ?>
-                        <?php echo $PAGE->theme->settings->showmobileintro; ?>
-					<?php } else { /* no main content on site-index, just welcome text! */ 
-								echo $OUTPUT->main_content();
-						} ?>
-                <?php } ?>
+					//only show main content if we are not showing anything else
+					$hidemain = false;
+					
+					if ($toblock || $toset) 
+						$hidemain = true;
+					elseif ($hasshowmobileintro && $mypagetype == 'site-index') {
+						echo $PAGE->theme->settings->showmobileintro;
+						$hidemain = true;
+					}
+					
+					if ($hidemain)
+						echo '<div style="display: none;">'.$OUTPUT->main_content().'</div>';
+					else
+						echo $OUTPUT->main_content();
+                ?>
                 </div>
             </div>
 
