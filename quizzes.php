@@ -11,20 +11,22 @@ $PAGE->set_pagelayout('standard');
 
 $PAGE->set_heading('Quizzes');
 
-echo $OUTPUT->header();
 
-$sql =  "SELECT quiz.id, c.id AS course_id, c.fullname AS course_name, quiz.name AS quiz_name FROM {quiz} AS quiz, {course} c"
-	." WHERE quiz.course=c.id ORDER BY course_name";
+// all courses with quizzes
+$coursesWithQuizzes = $DB->get_records_sql("SELECT c.id, c.id AS tmp, c.fullname FROM {quiz} AS quiz, {course} c".
+	" WHERE quiz.course=c.id GROUP BY c.id");
+// TODO: check if user enrolled in those courses?
 
-$quizzes = $DB->get_records_sql($sql);
+
+// get all quizzes
+$quizzes = get_all_instances_in_courses('quiz', $coursesWithQuizzes);
+
+
+// recheck quizzes, if user can access them
 $printQuizzes = array();
-
 if ($quizzes) {
 	foreach ($quizzes as $quiz) {
-		if (!$cm = get_coursemodule_from_instance("quiz", $quiz->id, $quiz->course_id)) {
-			print_error('invalidcoursemodule');
-		}
-		$context = get_context_instance(CONTEXT_MODULE, $cm->id);
+		$context = get_context_instance(CONTEXT_MODULE, $quiz->coursemodule);
 		if (!has_capability('mod/quiz:view', $context) || !has_capability('mod/quiz:attempt', $context)) {
 			continue;
 		}
@@ -32,18 +34,30 @@ if ($quizzes) {
 		$printQuizzes[] = $quiz;
 	}
 }
-		
+
+
+echo $OUTPUT->header();
+
 if (!$printQuizzes) {
 	echo 'No quizzes';
 } else {
-	echo '<ul data-role="controlgroup">';
+	$lastCourseId = null;
+	foreach ($printQuizzes as $quiz) {
 	
-	foreach ($printQuizzes as $quiz) {	
-		echo '<li><div class="coursebox clearfix"><div class="info"><h3 class="name"><a href="'.$CFG->wwwroot.'/mod/quiz/view.php?id='.$cm->id.'" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">';
-		echo $quiz->course_name.' - '.$quiz->quiz_name;
-		echo '</a></h3></div></div></li>';
+		// grouping by course
+		if ($lastCourseId != $quiz->course) {
+			if ($lastCourseId) echo '</ul>';
+
+			echo '<div class="headingwrap ui-bar-b ui-footer" style="margin: 20px 0 10px 0"><h2 class="main ui-title">'.$coursesWithQuizzes[$quiz->course]->fullname.'</h2></div>';
+			echo '<ul data-role="controlgroup">';
+			$lastCourseId = $quiz->course;
+		}
+		
+		echo '<li><div class="coursebox clearfix"><div class="info">';
+		echo '<a href="'.$CFG->wwwroot.'/mod/quiz/view.php?id='.$quiz->coursemodule.'" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d" style="text-align: left;">';
+		echo $quiz->name;
+		echo '</a></div></div></li>';
 	}
-	echo '</ul>';
 }
 
 echo $OUTPUT->footer();
