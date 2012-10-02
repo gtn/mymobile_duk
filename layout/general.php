@@ -175,10 +175,25 @@ echo $OUTPUT->doctype() ?>
 					
 					if ($toblock || $toset) 
 						$hidemain = true;
+					elseif ($mypagetype == 'site-index') {
+						// site index always use own intro
+						?>
+						<p style="text-align: center;"><strong>Willkommen bei der</strong></p>
+						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/duk.png" /></p>
+						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/austrocontrol.png" /></p>
+						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/spc.png" /></p>
+						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/gtn.png" /></p>
+						<p style="text-align: center;"><span style="font-size: medium;"><strong>Mobile-Quiz-App!</strong></span></p>
+
+						<?php
+						$hidemain = true;
+					}
+					/*
 					elseif ($hasshowmobileintro && $mypagetype == 'site-index') {
 						echo $PAGE->theme->settings->showmobileintro;
 						$hidemain = true;
 					}
+					*/
 					
 					if ($hidemain)
 						echo '<div style="display: none;">'.$OUTPUT->main_content().'</div>';
@@ -248,19 +263,29 @@ echo $OUTPUT->doctype() ?>
 
         <!-- start footer -->
         <div data-role="footer" class="mobilefooter" <?php echo $datatheme;?>>
-            <div data-role="navbar" class="jnav" >
+			<?php if (isloggedin()): ?>
+            <div data-role="navbar" class="jnav">
                 <ul>
-                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" ><?php p(get_string('calendar', 'calendar')); ?></a></li>
-					<?php /* add quizz link */ ?>
 					<li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/quizzes.php" data-icon="info" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
-                    <?php if (!empty($CFG->messaging)) { ?>
-                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/message/index.php" data-iconpos="top" data-icon="mymessage" ><?php p(get_string('messages', 'message')); ?></a></li>
-                    <?php } ?>
                     <?php if ($mypagetype != 'site-index') { ?>
                     <li><a href="#" data-inline="true" data-role="button" data-iconpos="top" data-icon="arrow-u" id="uptotop"><?php p(get_string('up')); ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
+            <div data-role="navbar" class="jnav">
+                <ul>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" >Upcoming Events</a></li>
+                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/message/index.php" data-iconpos="top" data-icon="mymessage" >Nachrichtenforum</a></li>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/courses.php" data-icon="info" data-iconpos="top" >Kurse</a></li>
+                </ul>
+            </div>
+			<?php else: ?>
+            <div data-role="navbar" class="jnav">
+                <ul>
+                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/login/index.php" data-iconpos="top" data-icon="mymessage" >Login</a></li>
+                </ul>
+            </div>
+			<?php endif; ?>
         </div>
         <!-- end footer -->
 
