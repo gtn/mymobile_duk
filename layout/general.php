@@ -266,7 +266,7 @@ echo $OUTPUT->doctype() ?>
 			<?php if (isloggedin()): ?>
             <div data-role="navbar" class="jnav">
                 <ul>
-					<li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/quizzes.php" data-icon="info" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
+					<li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/quizzes.php" data-icon="" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
                     <?php if ($mypagetype != 'site-index') { ?>
                     <li><a href="#" data-inline="true" data-role="button" data-iconpos="top" data-icon="arrow-u" id="uptotop"><?php p(get_string('up')); ?></a></li>
                     <?php } ?>
@@ -274,9 +274,9 @@ echo $OUTPUT->doctype() ?>
             </div>
             <div data-role="navbar" class="jnav">
                 <ul>
-                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" >Upcoming Events</a></li>
-                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/message/index.php" data-iconpos="top" data-icon="mymessage" >Nachrichtenforum</a></li>
-                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/courses.php" data-icon="info" data-iconpos="top" >Kurse</a></li>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" >Termine</a></li>
+                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/message/index.php" data-iconpos="top" data-icon="mymessage" >Nachrichten</a></li>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/courses.php" data-icon="" data-iconpos="top" >Kurse</a></li>
                 </ul>
             </div>
 			<?php else: ?>
