@@ -275,7 +275,7 @@ echo $OUTPUT->doctype() ?>
             <div data-role="navbar" class="jnav">
                 <ul>
                     <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" >Termine</a></li>
-                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/message/index.php" data-iconpos="top" data-icon="mymessage" >Nachrichten</a></li>
+                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/news.php" data-iconpos="top" data-icon="mymessage" >Nachrichten</a></li>
                     <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/courses.php" data-icon="" data-iconpos="top" >Kurse</a></li>
                 </ul>
             </div>
