@@ -43,17 +43,22 @@ if (!empty($courses)) {
 		$strmore = get_string('more', 'forum');
 
 	/// Accessibility: markup as a list.
-		echo '<h2>'.$course->fullname.'</h2>';
+		echo '<div class="headingwrap ui-bar-b ui-footer" style="margin: 20px 0 10px 0"><h2 class="main ui-title">'.$course->fullname.'</h2></div>';
 
-		$text = '';
-		$text .= "\n<ul class='unlist'>\n";
+		echo '<ul data-role="controlgroup">';
 		foreach ($discussions as $discussion) {
 
 			$discussion->subject = $discussion->name;
 
 			$discussion->subject = format_string($discussion->subject, true, $forum->course);
 
-			$text .= '<li class="post">'.
+		echo '<li><div class="coursebox clearfix"><div class="info">';
+		echo '<a href="'.$CFG->wwwroot.'/mod/forum/discuss.php?d='.$discussion->discussion.'" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d" style="text-align: left;">';
+		echo '<span style="color: #555; font-size: 14px;">'.userdate($discussion->modified, $strftimerecent).' / </span>'.$discussion->subject;
+		echo '</a></div></div></li>';
+
+		/*
+		$text .= '<li class="post">'.
 					 '<div class="head clearfix">'.
 					 '<div class="date">'.userdate($discussion->modified, $strftimerecent).'</div>'.
 					 '<div class="name">'.fullname($discussion).'</div></div>'.
@@ -61,10 +66,10 @@ if (!empty($courses)) {
 					 '<a href="'.$CFG->wwwroot.'/mod/forum/discuss.php?d='.$discussion->discussion.'">'.
 					 $strmore.'...</a></div>'.
 					 "</li>\n";
+		*/
 		}
-		$text .= "</ul>\n";
-
-		echo $text;
+		
+		echo "</ul>\n";
 	}
 }
 

@@ -268,14 +268,14 @@ echo $OUTPUT->doctype() ?>
                 <ul>
 					<li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/quizzes.php" data-icon="" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
                     <?php if ($mypagetype != 'site-index') { ?>
-                    <li><a href="#" data-inline="true" data-role="button" data-iconpos="top" data-icon="arrow-u" id="uptotop"><?php p(get_string('up')); ?></a></li>
+                    <li><a href="#" data-inline="true" data-role="button" data-iconpos="top" data-icon="" id="uptotop"><?php p(get_string('up')); ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
             <div data-role="navbar" class="jnav">
                 <ul>
-                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="info" data-iconpos="top" >Termine</a></li>
-                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/news.php" data-iconpos="top" data-icon="mymessage" >Nachrichten</a></li>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="" data-iconpos="top" >Termine</a></li>
+                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/news.php" data-iconpos="top" data-icon="" >Nachrichten</a></li>
                     <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/courses.php" data-icon="" data-iconpos="top" >Kurse</a></li>
                 </ul>
             </div>

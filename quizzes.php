@@ -58,6 +58,8 @@ if (!$printQuizzes) {
 		echo $quiz->name;
 		echo '</a></div></div></li>';
 	}
+	
+	echo '</ul>';
 }
 
 echo $OUTPUT->footer();
