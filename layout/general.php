@@ -179,11 +179,7 @@ echo $OUTPUT->doctype() ?>
 						// site index always use own intro
 						?>
 						<p style="text-align: center;"><strong>Willkommen bei der</strong></p>
-						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/duk.png" /></p>
-						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/austrocontrol.png" /></p>
-						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/spc.png" /></p>
-						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/gtn.png" /></p>
-						<p style="text-align: center;"><span style="font-size: medium;"><strong>Mobile-Quiz-App!</strong></span></p>
+						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/quoodle.png" /></p>
 
 						<?php
 						$hidemain = true;
