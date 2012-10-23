@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Embedded layout for the mymobile theme
+ * Embedded layout for the quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,7 +39,7 @@ $bodyclasses = array();
 $mypagetype = $PAGE->pagetype;
 
 echo $OUTPUT->doctype() ?>
-<html id="mymobile" <?php echo $OUTPUT->htmlattributes() ?>>
+<html id="quoodle" <?php echo $OUTPUT->htmlattributes() ?>>
 <head>
     <title><?php echo $PAGE->title ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->pix_url('favicon', 'theme')?>" />
@@ -64,7 +64,7 @@ echo $OUTPUT->doctype() ?>
                 <a class="ui-btn-right" data-ajax="false" data-icon="home" href="<?php p($CFG->wwwroot) ?>" data-iconpos="notext"><?php p(get_string('home')); ?></a>
             <?php } ?>
         </div>
-        <div data-role="content" class="mymobilecontent" data-theme="<?php echo $databodytheme;?>">
+        <div data-role="content" class="quoodlecontent" data-theme="<?php echo $databodytheme;?>">
             <?php echo $OUTPUT->main_content(); ?>
         </div>
     </div>

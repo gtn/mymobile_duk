@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lib file for mymobile theme
+ * Lib file for quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,8 +28,8 @@
  *
  * @param moodle_page $page
  */
-function mymobile_initialise_colpos(moodle_page $page) {
-    user_preference_allow_ajax_update('theme_mymobile_chosen_colpos', PARAM_ALPHA);
+function quoodle_initialise_colpos(moodle_page $page) {
+    user_preference_allow_ajax_update('theme_quoodle_chosen_colpos', PARAM_ALPHA);
 }
 
 /**
@@ -38,8 +38,8 @@ function mymobile_initialise_colpos(moodle_page $page) {
  * @param string $default
  * @return mixed
  */
-function mymobile_get_colpos($default = 'on') {
-    return get_user_preferences('theme_mymobile_chosen_colpos', $default);
+function quoodle_get_colpos($default = 'on') {
+    return get_user_preferences('theme_quoodle_chosen_colpos', $default);
 }
 
 /**
@@ -49,17 +49,17 @@ function mymobile_get_colpos($default = 'on') {
  * @param theme_config $theme
  * @return string
  */
-function mymobile_user_settings($css, $theme) {
+function quoodle_user_settings($css, $theme) {
     if (!empty($theme->settings->customcss)) {
         $customcss = $theme->settings->customcss;
     } else {
         $customcss = null;
     }
-    $css = mymobile_set_customcss($css, $customcss);
+    $css = quoodle_set_customcss($css, $customcss);
     return $css;
 }
 
-function mymobile_set_customcss($css, $customcss) {
+function quoodle_set_customcss($css, $customcss) {
     $tag = '[[setting:customcss]]';
     $css = str_replace($tag, $customcss, $css);
     return $css;

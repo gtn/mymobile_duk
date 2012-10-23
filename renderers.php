@@ -15,26 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Renderers for the mymobile theme
+ * Renderers for the quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * A custom renderer for the mymobile theme to produce snippets of content.
+ * A custom renderer for the quoodle theme to produce snippets of content.
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 include_once ($CFG->dirroot. '/mod/choice/renderer.php');
 
-class theme_mymobile_renderer extends plugin_renderer_base {
+class theme_quoodle_renderer extends plugin_renderer_base {
 
     /**
      * Produces the settings tree
@@ -105,14 +105,14 @@ class theme_mymobile_renderer extends plugin_renderer_base {
 }
 
 /**
- * Overridden core renderer for the mymobile theme
+ * Overridden core renderer for the quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_mymobile_core_renderer extends core_renderer {
+class theme_quoodle_core_renderer extends core_renderer {
 
     /**
      * Returns the dtheme to use for the selected swatch
@@ -163,7 +163,7 @@ class theme_mymobile_core_renderer extends core_renderer {
     public function block(block_contents $bc, $region) {
         // Avoid messing up the object passed in.
         $bc = clone($bc);
-        // The mymobile theme does not support collapsible blocks.
+        // The quoodle theme does not support collapsible blocks.
         $bc->collapsible = block_contents::NOT_HIDEABLE;
         // There are no controls that are usable within the
         $bc->controls = array();
@@ -240,13 +240,13 @@ class theme_mymobile_core_renderer extends core_renderer {
      * @param block_contents $bc
      */
     protected function init_block_hider_js(block_contents $bc) {
-        // The mymobile theme in no shape or form supports the hiding of blocks
+        // The quoodle theme in no shape or form supports the hiding of blocks
         // this function has been defined and left empty intentionally so that
         // the block hider JS is not even included.
     }
 
     /**
-     * Produces the navigation bar for the mymobile theme
+     * Produces the navigation bar for the quoodle theme
      *
      * @return string
      */
@@ -543,7 +543,7 @@ class theme_mymobile_core_renderer extends core_renderer {
 
         // now create the link around it
         // TODO: Do we need to specify the theme in the help.php link?
-        $url = new moodle_url('/help.php', array('component' => $helpicon->component, 'identifier' => $helpicon->identifier, 'lang'=>current_language(), 'theme'=>'mymobile'));
+        $url = new moodle_url('/help.php', array('component' => $helpicon->component, 'identifier' => $helpicon->identifier, 'lang'=>current_language(), 'theme'=>'quoodle'));
 
         // note: this title is displayed only if JS is disabled, otherwise the link will have the new ajax tooltip
         $title = get_string('helpprefix2', '', trim($title, ". \t"));
@@ -734,14 +734,14 @@ class theme_mymobile_core_renderer extends core_renderer {
 }
 
 /**
- * Overridden choie module renderer for the mymobile theme
+ * Overridden choie module renderer for the quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_mymobile_mod_choice_renderer extends mod_choice_renderer {
+class theme_quoodle_mod_choice_renderer extends mod_choice_renderer {
 
     /**
      * Returns HTML to display choices of option

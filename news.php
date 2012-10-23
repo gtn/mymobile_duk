@@ -6,7 +6,7 @@ require_once($CFG->dirroot.'/mod/forum/lib.php');   // We'll need this
 // Check login
 require_login();
 
-$PAGE->set_url('/theme/mymobile/news.php');
+$PAGE->set_url('/theme/quoodle/news.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_pagelayout('standard');
 

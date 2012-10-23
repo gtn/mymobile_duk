@@ -5,7 +5,7 @@ require_once("../../config.php");
 // Check login
 require_login();
 
-$PAGE->set_url('/theme/mymobile/quizzes.php');
+$PAGE->set_url('/theme/quoodle/quizzes.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_pagelayout('standard');
 

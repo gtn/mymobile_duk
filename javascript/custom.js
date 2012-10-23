@@ -22,7 +22,7 @@ $(document).ready(function() {
         //tablet column removal switch
         $('.slider').live("change",function() {
             var slids = $(this).val();
-            M.util.set_user_preference('theme_mymobile_chosen_colpos', slids);
+            M.util.set_user_preference('theme_quoodle_chosen_colpos', slids);
             if (slids == "off") {
                 $('.ui-page-active').removeClass("has-myblocks");
             } else {
@@ -228,7 +228,7 @@ $(document).ready(function() {
     $('div#page-mod-quiz-viewPAGE, div#page-mod-quiz-attemptPAGE, div#page-mod-quiz-summaryPAGE, div#page-mod-quiz-reviewPAGE, #page-mod-quiz-attempt #content2').live('pagebeforecreate',function(event, ui){
         //add quiz timer into quiz page
         $('#quiz-timer').remove();
-        $('.mymobilecontent').prepend('<div id="quiz-timer" > <span id="quiz-time-left"></span></div>');
+        $('.quoodlecontent').prepend('<div id="quiz-timer" > <span id="quiz-time-left"></span></div>');
         $('.que .info').addClass("ui-bar-" + mytheme);
         $('.que input.submit').attr("data-role", "none");
         $('div.submitbtns a, div.quizattemptcounts a').attr("data-role", "button").attr("data-ajax", "false");

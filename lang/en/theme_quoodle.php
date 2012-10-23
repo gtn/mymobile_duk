@@ -18,19 +18,19 @@
  * Label module version info
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['choosereadme'] = '<div class="clearfix"><div class="theme_screenshot"><h2>MyMobile</h2><img src="mymobile/pix/screenshot.png" /><h2>About</h2><p>MyMobile is a mobile theme for Moodle 2.x. More information on modifying themes can be found in the <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p></div></div>';
+$string['choosereadme'] = '<div class="clearfix"><div class="theme_screenshot"><h2>quoodle</h2><img src="quoodle/pix/screenshot.png" /><h2>About</h2><p>quoodle is a mobile theme for Moodle 2.x. More information on modifying themes can be found in the <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p></div></div>';
 $string['colourswatch'] = 'Mobile theme color swatch';
 $string['colourswatch_desc'] = 'Toggle the color swatch of the theme between grey and light/blue.';
 $string['grey'] = 'Grey';
 $string['light'] = 'Light/Blue';
 $string['mtoggle'] = 'Toggle 2nd Column';
 $string['no'] = 'No';
-$string['pluginname'] = 'MyMobile';
+$string['pluginname'] = 'quoodle';
 $string['region-myblocks'] = 'block region';
 $string['showmobileintro'] = 'Mobile Intro Text';
 $string['showmobileintro_desc'] = 'Add mobile only text/images to the mobile homepage.';

@@ -81,11 +81,11 @@ object.mediaplugin.mediaplugin_youtube, .mediaplugin object {
     max-width: 100% !important;
 }
 /*front page spacing issue */
-.ui-bar.mymobilebar {
+.ui-bar.quoodlebar {
     padding-bottom: 0;
     padding-left: 10px;
 }
-#page-site-indexPAGE2 .ui-bar.mymobilebar {
+#page-site-indexPAGE2 .ui-bar.quoodlebar {
     padding-top: 0px;
     margin-top: 0px;
 }

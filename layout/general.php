@@ -15,18 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * General layout for the mymobile theme
+ * General layout for the quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // get blocks?
-$toblock = optional_param('mymobile_blocks', false, PARAM_BOOL);
+$toblock = optional_param('quoodle_blocks', false, PARAM_BOOL);
 // get settings?
-$toset = optional_param('mymobile_settings', false, PARAM_BOOL);
+$toset = optional_param('quoodle_settings', false, PARAM_BOOL);
 
 $mypagetype = $PAGE->pagetype;
 $mylayoutype = $PAGE->pagelayout;
@@ -81,8 +81,8 @@ if ($mypagetype == 'course-view-topics' || $mypagetype == 'course-view-weeks') {
 }
 
 // below sets a URL variable to use in some links
-$urlblocks = new moodle_url($PAGE->url, array('mymobile_blocks' => 'true'));
-$urlsettings = new moodle_url($PAGE->url, array('mymobile_settings' => 'true'));
+$urlblocks = new moodle_url($PAGE->url, array('quoodle_blocks' => 'true'));
+$urlsettings = new moodle_url($PAGE->url, array('quoodle_settings' => 'true'));
 
 $hasheading = ($PAGE->heading);
 $hasnavbar = (empty($PAGE->layout_options['nonavbar']) && $PAGE->has_navbar());
@@ -98,14 +98,14 @@ $bodyclasses[] = (string)$showsitetopic;
 $gowide = ($mydevice == 'default' && $showusetableview == 'tabshow' || $mydevice == 'tablet' && $showusetableview == 'tabshow');
 if ($gowide) {
     // initialize column position choices.
-    mymobile_initialise_colpos($PAGE);
+    quoodle_initialise_colpos($PAGE);
 }
-$usercol = (mymobile_get_colpos() == 'on');
+$usercol = (quoodle_get_colpos() == 'on');
 
-$renderer = $PAGE->get_renderer('theme_mymobile');
+$renderer = $PAGE->get_renderer('theme_quoodle');
 
 echo $OUTPUT->doctype() ?>
-<html id="mymobile" <?php echo $OUTPUT->htmlattributes() ?>>
+<html id="quoodle" <?php echo $OUTPUT->htmlattributes() ?>>
 <head>
     <title><?php echo $PAGE->title ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->pix_url('favicon', 'theme')?>" />
@@ -122,7 +122,7 @@ echo $OUTPUT->doctype() ?>
     <?php echo $OUTPUT->standard_top_of_body_html() ?>
     <div id="<?php p($PAGE->bodyid) ?>PAGE" data-role="page" class="generalpage <?php echo 'ajaxedclass '; p($PAGE->bodyclasses.' '.join(' ', $bodyclasses));  ?> <?php if ($hasmyblocks && $usercol) { echo 'has-myblocks'; } ?> " data-title="<?php p($SITE->shortname) ?>">
         <!-- start header -->
-        <div data-role="header" <?php echo($datatheme);?> class="mymobileheader" data-position="fixed">
+        <div data-role="header" <?php echo($datatheme);?> class="quoodleheader" data-position="fixed">
             <h1><?php echo $PAGE->heading ?></h1>
             <?php if (isloggedin() && $mypagetype != 'site-index') { ?>
             <a class="ui-btn-right" data-icon="home" href="<?php p($CFG->wwwroot) ?>" data-iconpos="notext" data-ajax="false"><?php p(get_string('home')); ?></a>
@@ -154,7 +154,7 @@ echo $OUTPUT->doctype() ?>
         <!-- end header -->
 
         <!-- main content -->
-        <div data-role="content" class="mymobilecontent" <?php echo $databodytheme; ?>>
+        <div data-role="content" class="quoodlecontent" <?php echo $databodytheme; ?>>
           <?php if($toset) {  //if we get the true, that means load/show settings only ?>
             <h2 class="jsets"><?php p(get_string('settings')); ?></h2>
             <?php
@@ -179,7 +179,7 @@ echo $OUTPUT->doctype() ?>
 						// site index always use own intro
 						?>
 						<p style="text-align: center;"><strong>Willkommen bei der</strong></p>
-						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/mymobile/logos/quoodle.png" /></p>
+						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/quoodle/logos/quoodle.png" /></p>
 
 						<?php
 						$hidemain = true;
@@ -230,7 +230,7 @@ echo $OUTPUT->doctype() ?>
                 </div>
 
                 <div data-role="fieldcontain" id="sliderdiv">
-                    <label for="slider"><?php p(get_string('mtoggle','theme_mymobile')); ?>:</label>
+                    <label for="slider"><?php p(get_string('mtoggle','theme_quoodle')); ?>:</label>
                     <select name="slider" class="slider" data-role="slider" id="slider">
                         <option value="on">On</option>
                         <option value="off">Off</option>
@@ -262,8 +262,8 @@ echo $OUTPUT->doctype() ?>
 			<?php if (isloggedin()): ?>
             <div data-role="navbar" class="jnav">
                 <ul>
-					<li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/quizzes.php" data-icon="" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
-                    <?php if ($mypagetype != 'site-index') { ?>
+					<li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/quoodle/quizzes.php" data-icon="" data-iconpos="top" ><?php p('Quizzes'); ?></a></li>
+                    <?php if (0 /* disable top button */ && $mypagetype != 'site-index') { ?>
                     <li><a href="#" data-inline="true" data-role="button" data-iconpos="top" data-icon="" id="uptotop"><?php p(get_string('up')); ?></a></li>
                     <?php } ?>
                 </ul>
@@ -271,8 +271,8 @@ echo $OUTPUT->doctype() ?>
             <div data-role="navbar" class="jnav">
                 <ul>
                     <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/calendar/view.php" data-icon="" data-iconpos="top" >Termine</a></li>
-                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/news.php" data-iconpos="top" data-icon="" >Nachrichten</a></li>
-                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/mymobile/courses.php" data-icon="" data-iconpos="top" >Kurse</a></li>
+                    <li><a id="mymess" href="<?php p($CFG->wwwroot) ?>/theme/quoodle/news.php" data-iconpos="top" data-icon="" >Nachrichten</a></li>
+                    <li><a id="mycal" class="callink" href="<?php p($CFG->wwwroot) ?>/theme/quoodle/courses.php" data-icon="" data-iconpos="top" >Kurse</a></li>
                 </ul>
             </div>
 			<?php else: ?>

@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Config file for mymobile theme
+ * Config file for quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // The name of the theme
-$THEME->name = 'mymobile';
+$THEME->name = 'quoodle';
 
 // This theme relies on canvas and of course base themes
 $THEME->parents = array(
@@ -145,7 +145,7 @@ $THEME->layouts = array(
 // Get whether to show blocks and use appropriate pagelayout
 // this is necessary for block JS errors and other block problems
 $thisdevice = get_device_type();
-if ($thisdevice == "default" || $thisdevice == "tablet" || optional_param('mymobile_blocks', false, PARAM_BOOL)) {
+if ($thisdevice == "default" || $thisdevice == "tablet" || optional_param('quoodle_blocks', false, PARAM_BOOL)) {
     // These are layouts with blocks
     $blocklayouts = array('course', 'incourse', 'frontpage', 'mydashboard', 'mypublic');
     foreach ($blocklayouts as $layout) {
@@ -163,4 +163,4 @@ $THEME->javascripts = array(
 
 // Sets a custom render factory to use with the theme, used when working with custom renderers.
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
-$THEME->csspostprocess = 'mymobile_user_settings';
+$THEME->csspostprocess = 'quoodle_user_settings';

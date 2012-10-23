@@ -16,10 +16,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * version for mymobile theme
+ * version for quoodle theme
  *
  * @package    theme
- * @subpackage mymobile
+ * @subpackage quoodle
  * @copyright  John Stabinger
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,5 +28,5 @@ defined('MOODLE_INTERNAL') || die;
 
 $plugin->version = 2012061901;              // The current module version (Date: YYYYMMDDXX)
 $plugin->requires = 2011070101;             // Requires this Moodle version
-$plugin->component = 'theme_mymobile';
+$plugin->component = 'theme_quoodle';
 $plugin->maturity = MATURITY_STABLE;
