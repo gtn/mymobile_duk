@@ -38,7 +38,7 @@ function quoodle_initialise_colpos(moodle_page $page) {
  * @param string $default
  * @return mixed
  */
-function quoodle_get_colpos($default = 'on') {
+function quoodle_get_colpos($default = 'off') {
     return get_user_preferences('theme_quoodle_chosen_colpos', $default);
 }
 
