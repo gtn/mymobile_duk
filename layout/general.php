@@ -178,7 +178,6 @@ echo $OUTPUT->doctype() ?>
 					elseif ($mypagetype == 'site-index') {
 						// site index always use own intro
 						?>
-						<p style="text-align: center;"><strong>Willkommen bei der</strong></p>
 						<p style="text-align: center;"><img src="<?php echo $CFG->wwwroot; ?>/theme/quoodle/logos/quoodle.png" /></p>
 
 						<?php
