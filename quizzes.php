@@ -13,7 +13,7 @@ $PAGE->set_heading('Quizzes');
 
 
 // all courses with quizzes
-$coursesWithQuizzes = $DB->get_records_sql("SELECT c.id, c.id AS tmp, c.fullname FROM {quiz} AS quiz, {course} c".
+$coursesWithQuizzes = $DB->get_records_sql("SELECT c.id, c.id AS tmp, c.fullname, c.visible FROM {quiz} AS quiz, {course} c".
 	" WHERE quiz.course=c.id GROUP BY c.id");
 // TODO: check if user enrolled in those courses?
 
@@ -26,6 +26,11 @@ $quizzes = get_all_instances_in_courses('quiz', $coursesWithQuizzes);
 $printQuizzes = array();
 if ($quizzes) {
 	foreach ($quizzes as $quiz) {
+		if (!$coursesWithQuizzes[$quiz->course]->visible) {
+			// hidden course
+			continue;
+		}
+
 		$context = get_context_instance(CONTEXT_MODULE, $quiz->coursemodule);
 		if (!has_capability('mod/quiz:view', $context) || !has_capability('mod/quiz:attempt', $context)) {
 			continue;
